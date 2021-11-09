@@ -1,5 +1,5 @@
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-import { Entity } from "../../types/Entity";
+import { Entity } from "../../../types/Entity";
 
 /**
  * Retrieve entities by user id

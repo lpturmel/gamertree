@@ -2,10 +2,10 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { NextApiRequest, NextApiResponse } from "next";
 import { createEntity } from "../../db/entities";
-import { LeagueEntity } from "../../types/entities/League";
-import { Entity } from "../../types/Entity";
+import { LeagueEntity } from "../../../types/entities/League";
+import { Entity } from "../../../types/Entity";
 import { v4 as uuid } from "uuid";
-import { WowEntity } from "../../types/entities/Wow";
+import { WowEntity } from "../../../types/entities/Wow";
 
 const post = async (
 	req: NextApiRequest,
