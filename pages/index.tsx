@@ -2,6 +2,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
+import Layout from "../components/Layout";
 
 export default function Home() {
 	const { user, error, isLoading } = useUser();
@@ -11,10 +12,10 @@ export default function Home() {
 
 	if (user) {
 		return (
-			<div className="w-full min-h-screen bg-gray-900">
+			<Layout>
 				<Navbar />
 				Welcome {user.name}! <Link href="/api/auth/logout">Logout</Link>
-			</div>
+			</Layout>
 		);
 	}
 
