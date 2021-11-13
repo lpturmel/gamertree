@@ -11,8 +11,10 @@ export default withApiAuthRequired(async function entities(req, res) {
 			break;
 		case "POST":
 			await createEntity(req, res, client);
+			break;
 		case "DELETE":
 			await deleteEntity(req, res, client);
+			break;
 		default:
 			res.status(405).end();
 			break;
