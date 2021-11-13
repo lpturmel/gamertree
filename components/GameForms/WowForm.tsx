@@ -40,11 +40,13 @@ const WowForm: FunctionComponent<WowFormProps> = () => {
 				game: "wow",
 			});
 		}
+	}, [status]);
+
+	useEffect(() => {
 		if (newEntity.status === "success") {
 			router.push("/me");
 		}
-	}, [status, newEntity.data]);
-
+	}, [newEntity.data]);
 	return (
 		<div>
 			<form
