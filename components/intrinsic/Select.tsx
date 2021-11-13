@@ -1,9 +1,5 @@
-import {
-	ChangeEventHandler,
-	DetailedHTMLProps,
-	SelectHTMLAttributes,
-} from "react";
-import ArrowDown from "./ArrowDown";
+import { DetailedHTMLProps, SelectHTMLAttributes } from "react";
+import ArrowDown from "../icons/ArrowDown";
 
 export interface SelectProps {
 	elements: string[];
@@ -21,9 +17,9 @@ const Select: React.FunctionComponent<
 		<div className="relative">
 			<select
 				{...props}
-				className="w-full hover:border-gray-400 h-10 pl-4 outline-none focus:ring-2 appearance-none border-[1px] rounded-md border-gray-200 transition-colors duration-200"
+				className="w-full placeholder-gray-500 bg-gray-700 hover:border-gray-600 h-10 pl-4 outline-none focus:ring-2 appearance-none border-[1px] rounded-md border-gray-700 transition-colors duration-200"
 			>
-				{placeholder && <option value={null}>{placeholder}</option>}
+				{placeholder && <option value={""}>{placeholder}</option>}
 				{elements.map((element, index) => (
 					<option key={index} value={element}>
 						{element}

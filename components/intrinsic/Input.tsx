@@ -7,7 +7,7 @@ const Input: React.FunctionComponent<
 		<div className="relative">
 			<input
 				{...props}
-				className="w-full hover:border-gray-400 h-10 pl-4 outline-none focus:ring-2 focus:border-transparent appearance-none border-[1px] rounded-md border-gray-200 transition-colors duration-200"
+				className="w-full bg-gray-700 hover:border-gray-600 h-10 pl-4 outline-none focus:ring-2 focus:border-transparent appearance-none border-[1px] rounded-md border-gray-700 transition-colors duration-200"
 			/>
 		</div>
 	);

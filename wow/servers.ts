@@ -1,4 +1,4 @@
-export default {
+const regions = {
 	americas: [
 		"Aegwynn",
 		"Aerie Peak",
@@ -564,3 +564,5 @@ export default {
 		"Zuluhed",
 	],
 };
+
+export default regions;

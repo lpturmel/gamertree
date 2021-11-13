@@ -1,9 +1,9 @@
 import { useState } from "react";
 import LeagueFrom from "../components/GameForms/LeagueForm";
-import Select from "../components/Select";
+import Select from "../components/intrinsic/Select";
 import WowForm from "../components/GameForms/WowForm";
-import Navbar from "../components/Navbar";
-import Layout from "../components/Layout";
+import Navbar from "../components/layout/Navbar";
+import Layout from "../components/layout";
 
 const Add = () => {
 	const [entityType, setEntityType] = useState(null);
@@ -12,7 +12,7 @@ const Add = () => {
 	return (
 		<Layout>
 			<Navbar />
-			<div className="container mx-auto max-w-lg space-y-2">
+			<div className="container mx-auto max-w-lg space-y-2 pt-8">
 				<p className="text-2xl font-semibold">Add a new entity:</p>
 				<div className="space-y-2">
 					<p>Entity type</p>

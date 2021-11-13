@@ -1,6 +1,29 @@
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { Entity } from "../../../types/Entity";
 
+const ENTITY_PREFIX = "entity#";
+
+// Get entity of a user by entity id
+export const getUserEntity = async (
+	user_id: string,
+	entity_id: string,
+	db: DocumentClient
+) => {
+	const response = await db
+		.query({
+			TableName: process.env.TABLE_NAME,
+
+			KeyConditionExpression: "user_id = :user_id and SK = :entity_id",
+			ExpressionAttributeValues: {
+				":user_id": user_id,
+				":entity_id": ENTITY_PREFIX + entity_id,
+			},
+		})
+		.promise();
+
+	return response.Items as Entity[];
+};
+
 /**
  * Retrieve entities by user id
  */
@@ -40,4 +63,25 @@ export const createEntity = async (
 		})
 		.promise();
 	return { ...entity };
+};
+
+// Delete a users' entity by id
+export const deleteUserEntity = async (
+	user_id: string,
+	entity_id: string,
+	db: DocumentClient
+) => {
+	const response = await db
+		.delete({
+			TableName: process.env.TABLE_NAME,
+
+			Key: {
+				user_id,
+				SK: ENTITY_PREFIX + entity_id,
+			},
+			ReturnValues: "ALL_OLD",
+		})
+		.promise();
+
+	return response.Attributes as Entity;
 };

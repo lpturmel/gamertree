@@ -5,7 +5,7 @@ const ArrowDown = () => {
 			role="presentation"
 			focusable="false"
 			aria-hidden="true"
-			className="w-[1em] h-[1em] text-gray-600"
+			className="w-[1em] h-[1em] text-gray-400"
 		>
 			<path
 				fill="currentColor"
