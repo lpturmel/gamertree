@@ -34,11 +34,13 @@ const LeagueForm: React.FunctionComponent<LeagueFormProps> = () => {
 				game: "lol",
 			});
 		}
+	}, [status]);
 
+	useEffect(() => {
 		if (newEntity.status === "success") {
 			router.push("/me");
 		}
-	}, [status, newEntity.data]);
+	}, [newEntity.data]);
 	return (
 		<div className="flex flex-col">
 			<form onSubmit={handleSubmit}>
