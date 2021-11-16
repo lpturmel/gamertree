@@ -19,7 +19,7 @@ const Settings: FunctionComponent<SettingsProps> = () => {
     
     const handleBlur = () => {
         
-        if(username !== profile.data.public_username && username !== "") {
+        if(username !== profile.data?.public_username && username !== "") {
 
             userAvailability.mutate(username)
         }
@@ -36,7 +36,7 @@ const Settings: FunctionComponent<SettingsProps> = () => {
     useEffect(
     () => {
         if(profile.data) {
-            setUsername(profile.data.public_username)
+            setUsername(profile.data?.public_username)
         }
     }, [profile.data]);
 
@@ -63,7 +63,7 @@ const Settings: FunctionComponent<SettingsProps> = () => {
                         </div>
 					</div>
 					<div className="flex flex-row w-full justify-end">
-						<button disabled={username === profile.data.public_username || userAvailability.isLoading || userAvailability.isError} onClick={handleNameReservation} className="btn-main">Save</button>
+						<button disabled={username === profile.data?.public_username || userAvailability.isLoading || userAvailability.isError} onClick={handleNameReservation} className="btn-main">Save</button>
 					</div>
 				</div>
 				<div className="vstack space-y-2">
