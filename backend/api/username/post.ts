@@ -30,7 +30,10 @@ const post = async (req: NextApiRequest, res: NextApiResponse, client: DocumentC
         }
         const newProfile = await createUserProfile(session.user.email, username, client);
         
-        return res.json(newProfile);
+        return res.json({
+            public_username: username,
+            user_id: session.user.email
+        });
 	    } catch (error) {
 		    res.status(error.response.status || 500).json({ error: error.message });
 	}
