@@ -4,6 +4,7 @@ export interface LeagueEntity {
 	account_name: string;
 	region: RiotRegions;
 	game: "lol";
+    public_username?: string;
 }
 
 export type RiotRegions =

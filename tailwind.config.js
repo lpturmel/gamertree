@@ -10,8 +10,12 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: "#845EC2",
-				background: "#1A202D",
+				primary: "#6202EE",
+				"primary-hover": "#5601E8",
+				"primary-active": "#3600B3",
+				"text-hover": "#797979",
+				secondary: "#202020",
+				background: "#121212",
 			},
 		},
 	},

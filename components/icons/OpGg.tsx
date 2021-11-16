@@ -10,7 +10,7 @@ const OpGg: FunctionComponent<OpGgProps> = () => {
 			height="30px"
 			src="/opgg.jpeg"
 			alt="Op.gg"
-			className="rounded-full"
+			className="integration-icon rounded-full"
 		/>
 	);
 };

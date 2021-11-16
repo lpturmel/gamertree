@@ -1,12 +1,14 @@
 import { FunctionComponent } from "react";
 
-export interface SpinnerProps {}
+export interface SpinnerProps {
+    className?: string
+    }
 
-const Spinner: FunctionComponent<SpinnerProps> = () => {
+const Spinner: FunctionComponent<SpinnerProps> = ({ className }) => {
 	return (
-		<div className="mx-1 relative h-5 w-5 flex">
+		<div className={"mx-1 relative h-5 w-5 flex" + className}>
 			<svg
-				className="animate-spin absolute text-white top-0"
+				className={"animate-spin absolute text-white top-0"}
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
 				viewBox="0 0 24 24"

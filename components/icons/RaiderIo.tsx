@@ -5,7 +5,13 @@ export interface RaiderIoProps {}
 
 const RaiderIo: FunctionComponent<RaiderIoProps> = () => {
 	return (
-		<Image width="30px" height="30px" src="/raiderio.png" alt="raiderio" />
+		<Image
+			width="30px"
+			height="30px"
+			src="/raiderio.png"
+			alt="raiderio"
+			className="integration-icon"
+		/>
 	);
 };
 

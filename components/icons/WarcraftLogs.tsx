@@ -10,6 +10,7 @@ const WarcraftLogs: FunctionComponent<WarcraftLogsProps> = () => {
 			height="30px"
 			src="/warcraftlogs.webp"
 			alt="WarcraftLogs"
+			className="integration-icon"
 		/>
 	);
 };

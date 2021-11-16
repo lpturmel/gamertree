@@ -10,6 +10,7 @@ const LolChess: FunctionComponent<LolChessProps> = () => {
 			height="30px"
 			src="/lolchess.png"
 			alt="Lolchess.gg"
+			className="integration-icon"
 		/>
 	);
 };

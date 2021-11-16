@@ -7,6 +7,7 @@ import LeagueLogo from "../components/icons/LeagueLogo";
 import WowLogo from "../components/icons/WowLogo";
 import WowEntityItem from "../components/WowEntityItem";
 import LeagueEntityItem from "../components/LeagueEntityItem";
+import CustomHead from "../components/Head";
 
 export default withPageAuthRequired(function Profile() {
 	const { user } = useUser();
@@ -14,11 +15,13 @@ export default withPageAuthRequired(function Profile() {
 
 	return (
 		<Layout>
+			<CustomHead title="Profile" />
+
 			<Navbar />
 			<div className="p-4 pt-16 h-full my-4">
-				<div className="container mx-auto max-w-md flex flex-col space-y-8">
-					<div className="flex flex-row justify-between">
-						<p className="font-bold text-2xl">Your accounts </p>
+				<div className="vstack container mx-auto max-w-md space-y-8">
+					<div className="hstack justify-between">
+						<p className="title">Your accounts </p>
 						<Link href="/new">
 							<a className="btn-main text-xl">New account</a>
 						</Link>

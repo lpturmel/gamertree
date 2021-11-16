@@ -7,7 +7,7 @@ function useNewEntity<T>(game: "lol" | "wow") {
 	return useMutation(
 		"new-entity",
 		async (entity: T) => {
-			const response = await axios.post(
+			const { data } = await axios.post(
 				"/api/entities",
 				{
 					game,
@@ -19,7 +19,7 @@ function useNewEntity<T>(game: "lol" | "wow") {
 					},
 				}
 			);
-			return response;
+			return data;
 		},
 		{ onSuccess: (response) => addEntityToCache(response, queryClient) }
 	);

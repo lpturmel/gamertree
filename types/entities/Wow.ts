@@ -5,4 +5,5 @@ export interface WowEntity {
 	region: string;
 	realm: string;
 	game: "wow";
+    public_username?: string;
 }

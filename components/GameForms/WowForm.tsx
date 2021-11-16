@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { FunctionComponent, useEffect, useState } from "react";
-import useNewEntity from "../../hooks/useNewEntity";
-import useCharacter from "../../hooks/wow/useCharacter";
 import { WowEntity } from "../../types/entities/Wow";
 import { regionMap } from "../../wow/regions";
+import useCharacter from "../../hooks/wow/useCharacter";
+import useNewEntity from "../../hooks/useNewEntity";
 import servers from "../../wow/servers";
 import Input from "../intrinsic/Input";
 import Select from "../intrinsic/Select";

@@ -42,46 +42,52 @@ const LeagueForm: React.FunctionComponent<LeagueFormProps> = () => {
 		}
 	}, [newEntity.data]);
 	return (
-		<div className="flex flex-col">
+		<div className="vstack">
 			<form onSubmit={handleSubmit}>
-				<label>Region</label>
-				<Select
-					placeholder="Select a region..."
-					onChange={(e) => setRegion(e.target.value)}
-					elements={leagueRegions}
-				/>
-
-				{region !== "" && (
-					<>
-						<label>Summoner name</label>
-						<Input
-							value={summonerName}
-							onChange={(e) => setSummonerName(e.target.value)}
-							placeholder="Summoner name..."
+				<div className="vstack space-y-4">
+					<div className="vstack space-y-2">
+						<label>Region</label>
+						<Select
+							placeholder="Select a region..."
+							onChange={(e) => setRegion(e.target.value)}
+							elements={leagueRegions}
 						/>
-
-						<button
-							disabled={
-								isLoading ||
-								region === "" ||
-								summonerName === ""
-							}
-							type="submit"
-							className="btn-main"
-						>
-							<div className="flex flex-row justify-center items-center space-x-2">
-								<p> Add Summoner </p>
-								{isLoading && <Spinner />}
+					</div>
+					{region !== "" && (
+						<>
+							<div className="vstack space-y-2">
+								<label>Summoner name</label>
+								<Input
+									value={summonerName}
+									onChange={(e) =>
+										setSummonerName(e.target.value)
+									}
+									placeholder="Summoner name..."
+								/>
 							</div>
-						</button>
-						{isError && (
-							<p className="text-red-500">
-								{error.response.status === 404 &&
-									"Summoner not found"}
-							</p>
-						)}
-					</>
-				)}
+							<button
+								disabled={
+									isLoading ||
+									region === "" ||
+									summonerName === ""
+								}
+								type="submit"
+								className="btn-main"
+							>
+								<div className="hstack justify-center items-center space-x-2">
+									<p> Add Summoner </p>
+									{isLoading && <Spinner />}
+								</div>
+							</button>
+							{isError && (
+								<p className="text-red-500">
+									{error.response.status === 404 &&
+										"Summoner not found"}
+								</p>
+							)}
+						</>
+					)}
+				</div>
 			</form>
 		</div>
 	);

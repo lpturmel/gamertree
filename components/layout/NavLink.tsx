@@ -16,7 +16,7 @@ const NavLink: FunctionComponent<NavLinkProps> = ({ path, text }) => {
 				<p className="nav-link">{text}</p>
 			</Link>
 			{isActive && (
-				<div className="absolute -bottom-6 w-full border-b-2 border-red-400" />
+				<div className="absolute -bottom-6 w-full border-b-2 border-primary" />
 			)}
 		</div>
 	);

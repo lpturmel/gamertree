@@ -19,7 +19,7 @@ const LeagueEntityItem: FunctionComponent<LeagueEntityItemProps> = ({
 			<LeagueLogo />
 			<p className="font-semibold">{entity.account_name}</p>
 
-			<div className="py-1 rounded-full px-4 border-2 border-gray-600 justify-center  items-center absolute top-[45px] right-8 flex space-x-2 flex-row bg-background">
+			<div className="hstack py-2 rounded-full px-4 justify-center  items-center absolute top-[45px] right-8 space-x-2 bg-secondary">
 				<a
 					className="flex items-center justify-center"
 					href={constructLolChessUrl(
