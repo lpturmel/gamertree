@@ -4,44 +4,49 @@
 
 html,
 body {
-	padding: 0;
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    @apply bg-background;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .btn-main {
-	@apply bg-primary disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:active:bg-primary-active font-bold text-white rounded-md px-4 py-2 focus:ring-2 hover:bg-primary-hover active:bg-primary-active transition-colors;
+    @apply bg-primary disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:active:bg-primary-active font-bold text-white rounded-md px-4 py-2 focus:ring-2 hover:bg-primary-hover active:bg-primary-active transition-colors;
 }
 
 .danger-icon {
-	@apply bg-red-500 font-bold text-white rounded-md px-4 py-2 focus:ring-2 hover:bg-red-600 active:bg-red-700 transition-colors;
+    @apply bg-red-500 font-bold text-white rounded-md px-4 py-2 focus:ring-2 hover:bg-red-600 active:bg-red-700 transition-colors;
 }
 .nav-link {
-	@apply text-gray-200 hover:text-gray-400 transition-colors duration-200 cursor-pointer;
+    @apply text-gray-200 hover:text-gray-400 transition-colors duration-200 cursor-pointer;
 }
 
 .hstack {
-	@apply flex flex-row;
+    @apply flex flex-row;
 }
 
 .vstack {
-	@apply flex flex-col;
+    @apply flex flex-col;
 }
 
 .title {
-	@apply text-2xl font-bold;
+    @apply text-2xl font-bold;
 }
 
 .integration-icon {
-	@apply hover:opacity-70;
+    @apply hover:opacity-70;
+}
+
+details > summary {
+    list-style: none;
 }

@@ -8,40 +8,40 @@ import LolChess from "./icons/LolChess";
 import OpGg from "./icons/OpGg";
 
 export interface LeagueEntityItemProps {
-	entity: LeagueEntity;
+    entity: LeagueEntity;
 }
 
 const LeagueEntityItem: FunctionComponent<LeagueEntityItemProps> = ({
-	entity,
+    entity,
 }) => {
-	return (
-		<EntityWrapper entity={entity}>
-			<LeagueLogo />
-			<p className="font-semibold">{entity.account_name}</p>
+    return (
+        <EntityWrapper entity={entity}>
+            <LeagueLogo />
+            <p className="font-semibold">{entity.account_name}</p>
 
-			<div className="hstack py-2 rounded-full px-4 justify-center  items-center absolute top-[45px] right-8 space-x-2 bg-secondary">
-				<a
-					className="flex items-center justify-center"
-					href={constructLolChessUrl(
-						entity.region,
-						entity.account_name
-					)}
-					target="_blank"
-					rel="noreferrer"
-				>
-					<LolChess />
-				</a>
-				<a
-					className="flex items-center justify-center"
-					href={constructOpGgUrl(entity.account_name)}
-					target="_blank"
-					rel="noreferrer"
-				>
-					<OpGg />
-				</a>
-			</div>
-		</EntityWrapper>
-	);
+            <div className="hstack py-2 rounded-full px-4 justify-center  items-center absolute r-4 right-8 space-x-2 bg-secondary">
+                <a
+                    className="flex items-center justify-center"
+                    href={constructLolChessUrl(
+                        entity.region,
+                        entity.account_name
+                    )}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <LolChess />
+                </a>
+                <a
+                    className="flex items-center justify-center"
+                    href={constructOpGgUrl(entity.account_name)}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <OpGg />
+                </a>
+            </div>
+        </EntityWrapper>
+    );
 };
 
 export default LeagueEntityItem;
