@@ -1,10 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import client from "../../backend/db/client";
-import { withApiAuthRequired } from "@auth0/nextjs-auth0";
 import getUsernameAvailability from "../../backend/api/username/get";
 import createUserProfile from "../../backend/api/username/post";
 
-export default withApiAuthRequired(async function entities(
+export default async function entities(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
@@ -19,4 +18,4 @@ export default withApiAuthRequired(async function entities(
             res.status(405).end();
             break;
     }
-});
+}

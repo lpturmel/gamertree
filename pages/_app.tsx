@@ -1,7 +1,7 @@
-import { UserProvider } from "@auth0/nextjs-auth0";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "../styles/globals.css";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { SessionProvider } from "next-auth/react";
 
 const client = new QueryClient({
     defaultOptions: {
@@ -11,16 +11,16 @@ const client = new QueryClient({
     },
 });
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     return (
-        <UserProvider>
+        <SessionProvider session={session}>
             <QueryClientProvider client={client}>
                 <Component {...pageProps} />
 
                 <ReactQueryDevtools initialIsOpen={false} />
                 <div id="portal" />
             </QueryClientProvider>
-        </UserProvider>
+        </SessionProvider>
     );
 }
 

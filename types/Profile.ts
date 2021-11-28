@@ -1,6 +1,5 @@
-import { UserProfile } from "@auth0/nextjs-auth0"
+import { User } from "next-auth";
 
-export interface Profile extends UserProfile {
+export interface Profile extends User {
     public_username?: string;
-
 }

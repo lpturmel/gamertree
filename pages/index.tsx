@@ -1,22 +1,10 @@
-import { useUser } from "@auth0/nextjs-auth0";
 import Navbar from "../components/layout/Navbar";
-import { useRouter } from "next/router";
 import Layout from "../components/layout";
 import CustomHead from "../components/Head";
 import QnaItem from "../components/layout/QnaItem";
 import PricingCard from "../components/layout/PricingCard";
 
 export default function Home() {
-    const { user, error, isLoading } = useUser();
-    const router = useRouter();
-
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error.message}</div>;
-
-    if (user) {
-        router.push("/account/me");
-    }
-
     return (
         <Layout>
             <CustomHead title="Home" />

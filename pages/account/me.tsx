@@ -1,4 +1,3 @@
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Navbar from "../../components/layout/Navbar";
 import useEntities from "../../hooks/useEntities";
 import Link from "next/link";
@@ -6,7 +5,7 @@ import Layout from "../../components/layout";
 import Entities from "../../components/Entities";
 import CustomHead from "../../components/Head";
 
-export default withPageAuthRequired(function Profile() {
+const Profile = () => {
     const { data, isLoading } = useEntities();
 
     return (
@@ -28,4 +27,5 @@ export default withPageAuthRequired(function Profile() {
             </div>
         </Layout>
     );
-});
+};
+export default Profile;
