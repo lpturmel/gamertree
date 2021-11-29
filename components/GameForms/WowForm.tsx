@@ -8,11 +8,13 @@ import servers from "../../wow/servers";
 import Input from "../intrinsic/Input";
 import Select from "../intrinsic/Select";
 import Spinner from "../intrinsic/Spinner";
+import useProfile from "../../hooks/useProfile";
 
 export interface WowFormProps {}
 
 const WowForm: FunctionComponent<WowFormProps> = () => {
     const router = useRouter();
+    const profile = useProfile();
     const [region, setRegion] = useState("");
     const [realm, setRealm] = useState("");
     const [characterName, setCharacterName] = useState("");
@@ -38,6 +40,7 @@ const WowForm: FunctionComponent<WowFormProps> = () => {
                 entity_id: "",
                 user_id: "",
                 game: "wow",
+                public_username: profile.public_username,
             });
         }
     }, [status]);

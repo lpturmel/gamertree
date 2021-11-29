@@ -5,7 +5,6 @@ import { getEntitiesByUserName } from "../backend/db/entities";
 import { Entity } from "../types/Entity";
 import Layout from "../components/layout";
 import Entities from "../components/Entities";
-import Navbar from "../components/layout/Navbar";
 
 export interface UserPageProps {
     entities?: Entity[];
@@ -14,8 +13,7 @@ export interface UserPageProps {
 const UserPage: FunctionComponent<UserPageProps> = ({ entities }) => {
     return (
         <Layout>
-            <Navbar />
-            <div className="vstack container mx-auto max-w-sm space-y-8">
+            <div className="vstack container pt-32 mx-auto max-w-sm space-y-8">
                 <p className="text-center w-full font-semibold text-4xl">
                     {entities[0]?.public_username}
                 </p>

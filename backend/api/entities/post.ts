@@ -31,6 +31,7 @@ const post = async (
             case "lol":
                 let leagueRegion = req.body.region;
                 let leagueAccountName = req.body.account_name;
+                let leaguePublic_username = req.body.public_username;
 
                 if (!leagueRegion) {
                     return res.status(400).json({
@@ -49,6 +50,7 @@ const post = async (
                     region: leagueRegion,
                     account_name: leagueAccountName,
                     game,
+                    public_username: leaguePublic_username,
                 };
 
                 newEntity = lolEntity;
@@ -58,6 +60,7 @@ const post = async (
             case "wow":
                 let wowRegion = req.body.region;
                 let wowCharacterName = req.body.character_name;
+                let wowPublic_username = req.body.public_username;
 
                 if (!wowRegion) {
                     return res.status(400).json({
@@ -73,6 +76,7 @@ const post = async (
                     entity_id: entityId,
                     user_id: session.user.email,
                     region: wowRegion,
+                    public_username: wowPublic_username,
                     character_name: wowCharacterName,
                     realm: req.body.realm,
                     game,

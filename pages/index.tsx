@@ -1,4 +1,4 @@
-import Navbar from "../components/layout/Navbar";
+import StaticNavbar from "../components/layout/StaticNavbar";
 import Layout from "../components/layout";
 import CustomHead from "../components/Head";
 import QnaItem from "../components/layout/QnaItem";
@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <Layout>
             <CustomHead title="Home" />
-            <Navbar />
+            <StaticNavbar />
             <div className="container min-h-[80vh] mx-auto max-w-lg p-4">
                 <p className="font-bold text-4xl">
                     {" "}

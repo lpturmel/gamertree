@@ -7,10 +7,12 @@ import { LeagueEntity, RiotRegions } from "../../types/entities/League";
 import Input from "../intrinsic/Input";
 import Select from "../intrinsic/Select";
 import Spinner from "../intrinsic/Spinner";
+import useProfile from "../../hooks/useProfile";
 
 export interface LeagueFormProps {}
 
 const LeagueForm: React.FunctionComponent<LeagueFormProps> = () => {
+    const profile = useProfile();
     const { mutate, data, isLoading, isError, error, status } = useSummoner();
     const router = useRouter();
     const [region, setRegion] = useState("");
@@ -32,6 +34,7 @@ const LeagueForm: React.FunctionComponent<LeagueFormProps> = () => {
                 entity_id: "",
                 user_id: "",
                 game: "lol",
+                public_username: profile.public_username,
             });
         }
     }, [status]);

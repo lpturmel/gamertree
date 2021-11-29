@@ -1,12 +1,9 @@
-import axios from "axios";
-import { useQuery } from "react-query";
+import { useQueryClient } from "react-query";
 import { Profile } from "../types/Profile";
 
 const useProfile = () => {
-	return useQuery<Profile>("profile", async () => {
-		const { data } = await axios.get("/api/profile");
-		return data;
-	});
+    const queryClient = useQueryClient();
+    return queryClient.getQueryData<Profile>("profile");
 };
 
 export default useProfile;

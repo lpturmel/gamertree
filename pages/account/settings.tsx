@@ -7,12 +7,12 @@ import Layout from "../../components/layout";
 import Navbar from "../../components/layout/Navbar";
 import useNewUsername from "../../hooks/useNewUsername";
 import useUsernameAvailability from "../../hooks/useUsernameAvailability";
-import useProfile from "../../hooks/useProfile";
+import useFetchProfile from "../../hooks/useFetchProfile";
 
 export interface SettingsProps {}
 
 const Settings: FunctionComponent<SettingsProps> = () => {
-    const profile = useProfile();
+    const profile = useFetchProfile();
     const { mutate } = useNewUsername();
     const [username, setUsername] = useState("");
     const userAvailability = useUsernameAvailability();

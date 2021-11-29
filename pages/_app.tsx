@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import "../styles/globals.css";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { SessionProvider } from "next-auth/react";
 
 const client = new QueryClient({
@@ -11,13 +10,12 @@ const client = new QueryClient({
     },
 });
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps }) {
     return (
-        <SessionProvider session={session}>
+        <SessionProvider session={pageProps.session}>
             <QueryClientProvider client={client}>
                 <Component {...pageProps} />
 
-                <ReactQueryDevtools initialIsOpen={false} />
                 <div id="portal" />
             </QueryClientProvider>
         </SessionProvider>

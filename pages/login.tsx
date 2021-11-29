@@ -7,7 +7,7 @@ import {
 } from "next-auth/react";
 import { GetServerSideProps } from "next";
 import { BuiltInProviderType } from "next-auth/providers";
-import Navbar from "../components/layout/Navbar";
+import StaticNavbar from "../components/layout/StaticNavbar";
 import ProviderItem from "../components/ProviderItem";
 
 export interface LoginProps {
@@ -19,7 +19,7 @@ export interface LoginProps {
 const Login: FunctionComponent<LoginProps> = ({ providers }) => {
     return (
         <Layout>
-            <Navbar />
+            <StaticNavbar />
             <div className="vstack container max-w-md mx-auto">
                 <div>
                     <p className="text-4xl font-bold"> Sign in </p>
