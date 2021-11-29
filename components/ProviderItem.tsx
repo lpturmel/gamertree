@@ -16,7 +16,7 @@ const ProviderItem: FunctionComponent<ProviderItemProps> = ({ provider }) => {
             <Image
                 width="35px"
                 height="35px"
-                src={`/providers/${provider.name}.webp`}
+                src={`/providers/${provider.name.toLowerCase()}.webp`}
                 priority={true}
             />
             <p className="font-bold"> Sign In with {provider.name}</p>
