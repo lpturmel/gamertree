@@ -44,7 +44,7 @@ const EntityUpdateModal: FunctionComponent<EntityUpdateModalProps> = ({
             </div>
             <Modal isOpen={isOpen}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent onClose={closeModal}>
                     <ModalHeader onClose={closeModal}> Update </ModalHeader>
                     <ModalBody>
                         <GameForm entity={entity} />
