@@ -13,6 +13,7 @@ export interface AppNavbarProps {}
 const AppNavbar: FunctionComponent<AppNavbarProps> = () => {
     const { data: session } = useSession();
     const profile = useFetchProfile();
+    console.log(session);
     return (
         <div className="vstack">
             {!profile.isLoading && !profile.data && <UsernameBanner />}

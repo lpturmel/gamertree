@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, FormEvent, FunctionComponent } from "react";
 import useSummoner from "../../hooks/league/useSummoner";
 import useNewEntity from "../../hooks/useNewEntity";
 import { leagueRegions } from "../../league/utils";
@@ -8,28 +8,30 @@ import Input from "../intrinsic/Input";
 import Select from "../intrinsic/Select";
 import Spinner from "../intrinsic/Spinner";
 import useProfile from "../../hooks/useProfile";
+import { FormState, IFormState } from "../../atoms/GameForm/FormState";
+import { useRecoilState } from "recoil";
+import { setStateValue } from "../../utils/react";
 
 export interface LeagueFormProps {}
 
-const LeagueForm: React.FunctionComponent<LeagueFormProps> = () => {
-    const profile = useProfile();
+const LeagueForm: FunctionComponent<LeagueFormProps> = () => {
     const { mutate, data, isLoading, isError, error, status } = useSummoner();
-    const router = useRouter();
-    const [region, setRegion] = useState("");
-    const [summonerName, setSummonerName] = useState("");
+    const [formState, setFormState] = useRecoilState(FormState);
     const newEntity = useNewEntity<LeagueEntity>("lol");
+    const profile = useProfile();
+    const router = useRouter();
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         mutate({
-            summoner_name: summonerName,
-            region: region as RiotRegions,
+            summoner_name: formState.summoner_name,
+            region: formState.region as RiotRegions,
         });
     };
     useEffect(() => {
         if (status === "success") {
             newEntity.mutate({
-                region: region as RiotRegions,
+                region: formState.region as RiotRegions,
                 account_name: data.name,
                 entity_id: "",
                 user_id: "",
@@ -51,19 +53,30 @@ const LeagueForm: React.FunctionComponent<LeagueFormProps> = () => {
                     <div className="vstack space-y-2">
                         <label>Region</label>
                         <Select
-                            placeholder="Select a region..."
-                            onChange={(e) => setRegion(e.target.value)}
+                            placeholder="Select a region"
+                            value={formState.region}
+                            onChange={(e) =>
+                                setStateValue<IFormState>({
+                                    setState: setFormState,
+                                    key: "region",
+                                    new_value: e.target.value,
+                                })
+                            }
                             elements={leagueRegions}
                         />
                     </div>
-                    {region !== "" && (
+                    {formState.region !== "" && (
                         <>
                             <div className="vstack space-y-2">
                                 <label>Summoner name</label>
                                 <Input
-                                    value={summonerName}
+                                    value={formState.summoner_name}
                                     onChange={(e) =>
-                                        setSummonerName(e.target.value)
+                                        setStateValue<IFormState>({
+                                            setState: setFormState,
+                                            key: "summoner_name",
+                                            new_value: e.target.value,
+                                        })
                                     }
                                     placeholder="Summoner name..."
                                 />
@@ -71,8 +84,8 @@ const LeagueForm: React.FunctionComponent<LeagueFormProps> = () => {
                             <button
                                 disabled={
                                     isLoading ||
-                                    region === "" ||
-                                    summonerName === ""
+                                    formState.region === "" ||
+                                    formState.summoner_name === ""
                                 }
                                 type="submit"
                                 className="btn-main"

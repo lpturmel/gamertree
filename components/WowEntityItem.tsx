@@ -16,9 +16,11 @@ export interface WowEntityItemProps {
 const WowEntityItem: FunctionComponent<WowEntityItemProps> = ({ entity }) => {
     return (
         <EntityWrapper entity={entity}>
-            <WowLogo />
-            <p className="font-semibold">{entity.character_name}</p>
-            <div className="hstack py-2 rounded-full px-4 bg-secondary justify-center  items-center right-8 space-x-2 absolute r-4">
+            <div className="hstack items-center space-x-4">
+                <WowLogo />
+                <p className="font-semibold">{entity.character_name}</p>
+            </div>
+            <div className="hstack py-2 rounded-full bg-secondary justify-center  items-center right-8 space-x-2 ">
                 <a
                     className="flex items-center justify-center"
                     href={constructRaiderIoUrl(

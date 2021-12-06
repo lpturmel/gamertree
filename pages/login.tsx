@@ -20,15 +20,18 @@ const Login: FunctionComponent<LoginProps> = ({ providers }) => {
     return (
         <Layout>
             <StaticNavbar />
-            <div className="vstack container max-w-md mx-auto">
+            <div className="vstack container pt-32 max-w-md mx-auto p-2 space-y-4">
                 <div>
                     <p className="text-4xl font-bold"> Sign in </p>
                 </div>
-                {Object.values(providers).map((provider) => (
-                    <Fragment key={provider.id}>
-                        <ProviderItem provider={provider} />
-                    </Fragment>
-                ))}
+
+                <div className="vstack justify-center px-8 w-full space-y-4">
+                    {Object.values(providers).map((provider) => (
+                        <Fragment key={provider.id}>
+                            <ProviderItem provider={provider} />
+                        </Fragment>
+                    ))}
+                </div>
             </div>
         </Layout>
     );

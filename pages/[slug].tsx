@@ -20,7 +20,7 @@ const UserPage: FunctionComponent<UserPageProps> = ({ entities }) => {
                 {entities.length === 0 ? (
                     <div> User not found</div>
                 ) : (
-                    <Entities entities={entities} />
+                    <Entities entities={entities} is_public={true} />
                 )}
             </div>
         </Layout>

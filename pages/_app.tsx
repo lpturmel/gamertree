@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
+import { RecoilRoot } from "recoil";
 
 const client = new QueryClient({
     defaultOptions: {
@@ -13,11 +14,13 @@ const client = new QueryClient({
 function MyApp({ Component, pageProps }) {
     return (
         <SessionProvider session={pageProps.session}>
+        <RecoilRoot>
             <QueryClientProvider client={client}>
                 <Component {...pageProps} />
 
                 <div id="portal" />
             </QueryClientProvider>
+            </RecoilRoot>
         </SessionProvider>
     );
 }

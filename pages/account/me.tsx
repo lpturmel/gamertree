@@ -4,6 +4,7 @@ import Link from "next/link";
 import Layout from "../../components/layout";
 import Entities from "../../components/Entities";
 import CustomHead from "../../components/Head";
+import EntityAdd from "../../components/modals/EntityAdd";
 
 const Profile = () => {
     const { data, isLoading } = useEntities();
@@ -17,12 +18,12 @@ const Profile = () => {
                 <div className="vstack container mx-auto max-w-md space-y-8">
                     <div className="hstack justify-between">
                         <p className="title">Your accounts </p>
-                        <Link href="/account/new">
-                            <a className="btn-main text-xl">New account</a>
-                        </Link>
+                        <EntityAdd />
                     </div>
 
-                    {!isLoading && <Entities entities={data} />}
+                    {!isLoading && (
+                        <Entities entities={data} is_public={false} />
+                    )}
                 </div>
             </div>
         </Layout>

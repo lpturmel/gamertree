@@ -26,6 +26,7 @@ const get = async (
             username,
         });
     } catch (error) {
+        console.log(error);
         res.status(error.status || 500).json({ error: error.message });
     }
 };

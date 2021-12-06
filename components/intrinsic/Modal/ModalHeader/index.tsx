@@ -1,13 +1,22 @@
 import { FunctionComponent } from "react";
+import { IoCloseSharp } from "react-icons/io5";
 
-export interface ModalHeaderProps {}
+export interface ModalHeaderProps {
+    onClose: Function;
+}
 
 const ModalHeader: FunctionComponent<ModalHeaderProps> = (props) => {
-	return (
-		<div className="flex flex-row justify-between px-4 py-4 text-xl font-semibold">
-			{props.children}
-		</div>
-	);
+    return (
+        <div className="flex flex-row justify-between px-4 py-4 text-xl font-semibold">
+            {props.children}
+            <button
+                onClick={() => props.onClose()}
+                className="p-2 rounded-lg hover:bg-secondary cursor-pointer"
+            >
+                <IoCloseSharp />
+            </button>
+        </div>
+    );
 };
 
 export default ModalHeader;

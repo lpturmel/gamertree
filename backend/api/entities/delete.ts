@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { NextApiRequest, NextApiResponse } from "next";
-import { deleteUserEntity } from "../../db/entities";
+import { deleteUserEntity, getUserEntity } from "../../db/entities";
 
 const deleteEntity = async (
     req: NextApiRequest,
@@ -24,10 +24,10 @@ const deleteEntity = async (
             entity_id,
             client
         );
-        console.log(deletedEntity);
-        res.status(200).json(deletedEntity);
+        return res.status(200).json(deletedEntity.Attributes);
     } catch (error) {
-        res.status(error.status || 500).json({ error: error.message });
+        console.log(error);
+        return res.status(error.status || 500).json({ error: error.message });
     }
 };
 

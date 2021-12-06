@@ -1,23 +1,37 @@
-import { FunctionComponent } from "react";
+import { Fragment, FunctionComponent } from "react";
 import { Entity } from "../types/Entity";
-import WowEntityItem from "../components/WowEntityItem";
-import LeagueEntityItem from "../components/LeagueEntityItem";
+import EntityUpdate from "../components/modals/EntityUpdate";
+import { CgSearch } from "react-icons/cg";
+import EntityItem from "./EntityItem";
+
 export interface EntitiesProps {
+    is_public: boolean;
     entities: Entity[];
 }
 
-const Entities: FunctionComponent<EntitiesProps> = ({ entities }) => {
+const Entities: FunctionComponent<EntitiesProps> = ({
+    entities,
+    is_public,
+}) => {
     return (
         <div className="vstack space-y-4">
             {entities.map((entity) => (
-                <div key={entity.entity_id}>
-                    {entity.game === "wow" ? (
-                        <WowEntityItem entity={entity} />
+                <Fragment key={entity.entity_id}>
+                    {is_public ? (
+                        <EntityItem key={entity.entity_id} entity={entity} />
                     ) : (
-                        <LeagueEntityItem entity={entity} />
+                        <EntityUpdate entity={entity} />
                     )}
-                </div>
+                </Fragment>
             ))}
+            {entities.length === 0 && (
+                <div className="vstack justify-center items-center text-gray-600">
+                    <div className="hstack justify-center items-center rounded-full bg-secondary p-4">
+                        <CgSearch className="w-10 h-10" />
+                    </div>
+                    <p> No linked accounts </p>
+                </div>
+            )}
         </div>
     );
 };

@@ -3,7 +3,7 @@ import { getSession } from "next-auth/react";
 import { getUserProfile } from "../../backend/db/profile";
 import client from "../../backend/db/client";
 
-export default async function entities(
+export default async function profile(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
@@ -18,11 +18,18 @@ export default async function entities(
 
         const profile = await getUserProfile(session.user.email, client);
 
+        if (!profile) {
+            return res.status(200).json(null);
+        }
+
         return res.status(200).json({
             public_username: profile.public_username,
             user_id: profile.user_id,
         });
     } catch (error) {
-        res.status(error.response.status || 500).json({ error: error.message });
+        console.log(error);
+        return res.status(error.status || 500).json({
+            error: error.message,
+        });
     }
 }

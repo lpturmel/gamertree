@@ -105,5 +105,5 @@ export const deleteUserEntity = async (
         })
         .promise();
 
-    return response.Attributes as Entity;
+    return response;
 };
