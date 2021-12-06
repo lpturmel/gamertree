@@ -5,8 +5,6 @@ import ModalBody from "./Modal/ModalBody";
 import ModalHeader from "./Modal/ModalHeader";
 import ModalFooter from "./Modal/ModalFooter";
 import ModalOverlay from "./Modal/ModalOverlay";
-import { CgClose } from "react-icons/cg";
-import Icon from "./Icon";
 
 export interface ConfirmationModalProps {
     header: string;
@@ -19,6 +17,7 @@ const ConfirmationModal: FunctionComponent<ConfirmationModalProps> = ({
     children,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const closeModal = () => setIsOpen(false);
     return (
         <>
             <button className="danger-icon" onClick={() => setIsOpen(true)}>
@@ -27,10 +26,8 @@ const ConfirmationModal: FunctionComponent<ConfirmationModalProps> = ({
             </button>
             <Modal isOpen={isOpen}>
                 <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader onClose={() => setIsOpen(false)}>
-                        {header}
-                    </ModalHeader>
+                <ModalContent onClose={closeModal}>
+                    <ModalHeader onClose={closeModal}>{header}</ModalHeader>
                     <ModalBody>{children}</ModalBody>
                     <ModalFooter>
                         <div className="hstack w-full justify-end space-x-8">
