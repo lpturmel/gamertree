@@ -23,7 +23,10 @@ const LeagueEntityItem: FunctionComponent<LeagueEntityItemProps> = ({
                 <p className="font-semibold">{entity.account_name}</p>
             </div>
 
-            <div className="hstack py-2 rounded-full justify-center items-center space-x-2 bg-secondary">
+            <div
+                onClick={(e) => e.stopPropagation()}
+                className="hstack py-2 rounded-full justify-center items-center space-x-2 bg-secondary"
+            >
                 <a
                     className="flex items-center justify-center"
                     href={constructLolChessUrl(
