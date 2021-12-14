@@ -17,7 +17,7 @@ const WowForm: FunctionComponent<WowFormProps> = () => {
     }));
 
     return (
-        <div>
+        <div className="vstack space-y-4">
             <div className="flex flex-col space-y-2">
                 <label>Region</label>
                 <Select
@@ -33,50 +33,47 @@ const WowForm: FunctionComponent<WowFormProps> = () => {
                     elements={regionEntries}
                 />
             </div>
-            <div>
-                {formState.region !== "" && (
-                    <div className="flex flex-col space-y-4">
-                        <div className="flex flex-col space-y-2">
-                            <label>Realm</label>
+            {formState.region !== "" && (
+                <>
+                    <div className="flex flex-col space-y-2">
+                        <label>Realm</label>
 
-                            <Select
-                                placeholder="Select a realm"
-                                value={formState.realm}
-                                elements={regions[formState.region].servers.map(
-                                    (realm: string) => ({
-                                        value: realm,
-                                        label: realm,
-                                    })
-                                )}
+                        <Select
+                            placeholder="Select a realm"
+                            value={formState.realm}
+                            elements={regions[formState.region].servers.map(
+                                (realm: string) => ({
+                                    value: realm,
+                                    label: realm,
+                                })
+                            )}
+                            onChange={(e) =>
+                                setStateValue<IFormState>({
+                                    setState: setFormState,
+                                    key: "realm",
+                                    new_value: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    {formState.realm && formState.realm !== "" && (
+                        <div className="flex flex-col space-y-2">
+                            <label>Character name</label>
+                            <Input
+                                value={formState.character_name}
                                 onChange={(e) =>
                                     setStateValue<IFormState>({
                                         setState: setFormState,
-                                        key: "realm",
+                                        key: "character_name",
                                         new_value: e.target.value,
                                     })
                                 }
+                                placeholder="Character name..."
                             />
                         </div>
-                        {formState.realm && formState.realm !== "" && (
-                            <>
-                                <div className="flex flex-col space-y-2">
-                                    <label>Character name</label>
-                                    <Input
-                                        onChange={(e) =>
-                                            setStateValue<IFormState>({
-                                                setState: setFormState,
-                                                key: "character_name",
-                                                new_value: e.target.value,
-                                            })
-                                        }
-                                        placeholder="Character name..."
-                                    />
-                                </div>
-                            </>
-                        )}
-                    </div>
-                )}
-            </div>
+                    )}
+                </>
+            )}
         </div>
     );
 };

@@ -18,9 +18,11 @@ const LeagueEntityItem: FunctionComponent<LeagueEntityItemProps> = ({
 }) => {
     return (
         <EntityWrapper entity={entity}>
-            <div className="hstack items-center space-x-4">
+            <div className="hstack items-center">
                 <LeagueLogo />
-                <p className="font-semibold">{entity.account_name}</p>
+                <p className="font-semibold mx-4 truncate">
+                    {entity.account_name}
+                </p>
             </div>
 
             <div
@@ -28,7 +30,7 @@ const LeagueEntityItem: FunctionComponent<LeagueEntityItemProps> = ({
                 className="hstack py-2 rounded-full justify-center items-center space-x-2 bg-secondary"
             >
                 <a
-                    className="flex items-center justify-center"
+                    className="flex focus-style items-center justify-center"
                     href={constructLolChessUrl(
                         entity.region,
                         entity.account_name
@@ -39,7 +41,7 @@ const LeagueEntityItem: FunctionComponent<LeagueEntityItemProps> = ({
                     <LolChess />
                 </a>
                 <a
-                    className="flex items-center justify-center"
+                    className="flex focus-style items-center justify-center"
                     href={constructOpGgUrl(entity.account_name)}
                     target="_blank"
                     rel="noreferrer"
@@ -47,7 +49,7 @@ const LeagueEntityItem: FunctionComponent<LeagueEntityItemProps> = ({
                     <OpGg />
                 </a>
                 <a
-                    className="flex items-center justify-center"
+                    className="flex focus-style items-center justify-center"
                     href={constructUGgUrl(entity.region, entity.account_name)}
                     target="_blank"
                     rel="noreferrer"

@@ -1,4 +1,5 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
+import QnaIcon from "../icons/QnaIcon";
 
 export interface QnaItemProps {
     question: string;
@@ -6,11 +7,19 @@ export interface QnaItemProps {
 }
 
 const QnaItem: FunctionComponent<QnaItemProps> = ({ question, answer }) => {
-    return ( 
-       <details className="shadow-md cursor-pointer bg-secondary rounded-md vstack p-4 justify-start items-center">
-            <summary> <p className="font-bold">{question} </p> </summary>
-            <p className="pt-4"> {answer} </p>
-       </details>
-    )
-}
+    const [isExpanded, setIsExpanded] = useState(false);
+    return (
+        <details className="shadow-md cursor-pointer bg-secondary rounded-md vstack justify-start items-center">
+            <summary
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="hstack justify-between items-center outline-none p-4 rounded-md focus:ring-2"
+            >
+                {" "}
+                <p className="font-bold select-none">{question} </p>{" "}
+                <QnaIcon isExpanded={isExpanded} />
+            </summary>
+            <p className="text-sm p-4"> {answer} </p>
+        </details>
+    );
+};
 export default QnaItem;

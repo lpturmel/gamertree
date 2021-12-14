@@ -10,7 +10,8 @@ import ModalOverlay from "../../components/intrinsic/Modal/ModalOverlay";
 import GameForm from "../../components/GameForms";
 import { Entity } from "../../types/Entity";
 import EntityItem from "../EntityItem";
-import useEscapeBinding from "../../hooks/useEscBinding";
+import { FormState, resetState } from "../../atoms/GameForm/FormState";
+import { useRecoilState } from "recoil";
 
 export interface EntityUpdateModalProps {
     entity: Entity;
@@ -20,9 +21,13 @@ const EntityUpdateModal: FunctionComponent<EntityUpdateModalProps> = ({
     entity,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [formState, setFormState] = useRecoilState(FormState);
     const { mutate } = useDeleteEntity();
 
-    const closeModal = () => setIsOpen(false);
+    const closeModal = () => {
+        setIsOpen(false);
+        setTimeout(() => resetState(setFormState), 500);
+    };
     const universal_name =
         entity.game === "lol" ? entity.account_name : entity.character_name;
 
@@ -36,10 +41,10 @@ const EntityUpdateModal: FunctionComponent<EntityUpdateModalProps> = ({
         //TODO
         console.log("Update!");
     };
-    useEscapeBinding(closeModal);
+    //useEscapeBinding(closeModal);
     return (
         <>
-            <div onClick={() => setIsOpen(true)}>
+            <div onClick={() => setIsOpen(true)} className="cursor-pointer">
                 <EntityItem entity={entity} />
             </div>
             <Modal isOpen={isOpen}>

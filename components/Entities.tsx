@@ -3,6 +3,7 @@ import { Entity } from "../types/Entity";
 import EntityUpdate from "../components/modals/EntityUpdate";
 import { CgSearch } from "react-icons/cg";
 import EntityItem from "./EntityItem";
+import { AnimatePresence } from "framer-motion";
 
 export interface EntitiesProps {
     is_public: boolean;
@@ -15,15 +16,20 @@ const Entities: FunctionComponent<EntitiesProps> = ({
 }) => {
     return (
         <div className="vstack space-y-4">
-            {entities.map((entity) => (
-                <Fragment key={entity.entity_id}>
-                    {is_public ? (
-                        <EntityItem key={entity.entity_id} entity={entity} />
-                    ) : (
-                        <EntityUpdate entity={entity} />
-                    )}
-                </Fragment>
-            ))}
+            <AnimatePresence exitBeforeEnter initial={true}>
+                {entities.map((entity) => (
+                    <Fragment key={entity.entity_id}>
+                        {is_public ? (
+                            <EntityItem
+                                key={entity.entity_id}
+                                entity={entity}
+                            />
+                        ) : (
+                            <EntityUpdate entity={entity} />
+                        )}
+                    </Fragment>
+                ))}
+            </AnimatePresence>
             {entities.length === 0 && (
                 <div className="vstack justify-center items-center text-gray-600">
                     <div className="hstack justify-center items-center rounded-full bg-secondary p-4">

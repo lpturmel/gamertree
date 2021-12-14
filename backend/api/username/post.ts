@@ -1,6 +1,7 @@
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
+import { bulkUpdateEntitiesOwner } from "../../db/entities";
 import { createUserProfile, isUsernameTaken } from "../../db/profile";
 
 const post = async (
@@ -32,7 +33,7 @@ const post = async (
             });
         }
         await createUserProfile(session.user.email, username, client);
-
+        await bulkUpdateEntitiesOwner(session.user.email, username, client);
         return res.json({
             public_username: username,
             user_id: session.user.email,

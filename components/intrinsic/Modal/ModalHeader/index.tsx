@@ -10,8 +10,9 @@ const ModalHeader: FunctionComponent<ModalHeaderProps> = (props) => {
         <div className="flex flex-row justify-between px-4 py-4 text-xl font-semibold">
             {props.children}
             <button
+                autoFocus
                 onClick={() => props.onClose()}
-                className="p-2 rounded-lg hover:bg-secondary cursor-pointer"
+                className="focus-style p-2 rounded-lg hover:bg-secondary cursor-pointer"
             >
                 <IoCloseSharp />
             </button>

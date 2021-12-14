@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 export interface IFormState {
-    entityType: null | string;
+    entityType: null | "wow" | "lol";
     region: string;
     realm?: string;
     character_name?: string;

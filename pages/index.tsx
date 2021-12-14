@@ -7,6 +7,7 @@ import PricingCard from "../components/layout/PricingCard";
 export default function Home() {
     return (
         <Layout>
+            {" "}
             <CustomHead title="Home" />
             <StaticNavbar />
             <div className="container min-h-[80vh] mx-auto max-w-lg p-4">
@@ -15,7 +16,6 @@ export default function Home() {
                     Share all your game accounts in one link{" "}
                 </p>
             </div>
-
             <div className="container max-w-lg mx-auto min-h-[40vh] w-full">
                 <div className="vstack space-y-4">
                     <p className="font-bold text-2xl w-full text-center">

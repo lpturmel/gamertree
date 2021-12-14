@@ -25,7 +25,7 @@ const WowEntityItem: FunctionComponent<WowEntityItemProps> = ({ entity }) => {
                 className="hstack py-2 rounded-full bg-secondary justify-center  items-center right-8 space-x-2 "
             >
                 <a
-                    className="flex items-center justify-center"
+                    className="flex focus-style items-center justify-center"
                     href={constructRaiderIoUrl(
                         entity.region,
                         entity.realm,
@@ -37,7 +37,7 @@ const WowEntityItem: FunctionComponent<WowEntityItemProps> = ({ entity }) => {
                     <RaiderIo />
                 </a>
                 <a
-                    className="flex items-center justify-center"
+                    className="flex focus-style items-center justify-center"
                     href={constructRaidBotsUrl(
                         entity.region,
                         entity.realm,
@@ -49,7 +49,7 @@ const WowEntityItem: FunctionComponent<WowEntityItemProps> = ({ entity }) => {
                     <RaidBots />
                 </a>
                 <a
-                    className="flex items-center justify-center"
+                    className="flex focus-style focus:ring-2 items-center justify-center"
                     href={constructWarcraftLogsUrl(
                         entity.region,
                         entity.realm,

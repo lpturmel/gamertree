@@ -1,5 +1,4 @@
-import { FunctionComponent, useRef } from "react";
-import useOutboundAction from "../../../../hooks/useOutboundClick";
+import { FunctionComponent } from "react";
 
 export interface ModalBodyProps {}
 

@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "react-query";
+import { AnimatePresence } from "framer-motion";
 import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
@@ -14,12 +15,14 @@ const client = new QueryClient({
 function MyApp({ Component, pageProps }) {
     return (
         <SessionProvider session={pageProps.session}>
-        <RecoilRoot>
-            <QueryClientProvider client={client}>
-                <Component {...pageProps} />
+            <RecoilRoot>
+                <QueryClientProvider client={client}>
+                    <AnimatePresence exitBeforeEnter initial={true}>
+                        <Component {...pageProps} />
+                    </AnimatePresence>
 
-                <div id="portal" />
-            </QueryClientProvider>
+                    <div id="portal" />
+                </QueryClientProvider>
             </RecoilRoot>
         </SessionProvider>
     );

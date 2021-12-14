@@ -107,3 +107,31 @@ export const deleteUserEntity = async (
 
     return response;
 };
+
+/**
+ * Update all user entities public_username to the new username
+ */
+export const bulkUpdateEntitiesOwner = async (
+    user_id: string,
+    new_username: string,
+    db: DocumentClient
+) => {
+    const entities = await getEntities(user_id, db);
+    const putRequestItems = entities.map((entity) => ({
+        PutRequest: {
+            Item: {
+                ...entity,
+                public_username: new_username,
+            },
+        },
+    }));
+    console.log(putRequestItems[0].PutRequest.Item);
+    const updateResponse = await db
+        .batchWrite({
+            RequestItems: {
+                [process.env.TABLE_NAME]: putRequestItems,
+            },
+        })
+        .promise();
+    console.log(updateResponse);
+};

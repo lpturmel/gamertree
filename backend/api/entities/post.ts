@@ -6,6 +6,7 @@ import { LeagueEntity } from "../../../types/entities/League";
 import { Entity } from "../../../types/Entity";
 import { v4 as uuid } from "uuid";
 import { WowEntity } from "../../../types/entities/Wow";
+import { getUserProfile } from "../../db/profile";
 
 const post = async (
     req: NextApiRequest,
@@ -31,7 +32,6 @@ const post = async (
             case "lol":
                 let leagueRegion = req.body.region;
                 let leagueAccountName = req.body.account_name;
-                let leaguePublic_username = req.body.public_username;
 
                 if (!leagueRegion) {
                     return res.status(400).json({
@@ -44,13 +44,17 @@ const post = async (
                     });
                 }
 
+                const userProfile = await getUserProfile(
+                    session.user.email,
+                    client
+                );
                 const lolEntity: LeagueEntity = {
                     entity_id: entityId,
                     user_id: session.user.email,
                     region: leagueRegion,
                     account_name: leagueAccountName,
                     game,
-                    public_username: leaguePublic_username,
+                    public_username: userProfile.public_username,
                 };
 
                 newEntity = lolEntity;
@@ -60,7 +64,6 @@ const post = async (
             case "wow":
                 let wowRegion = req.body.region;
                 let wowCharacterName = req.body.character_name;
-                let wowPublic_username = req.body.public_username;
 
                 if (!wowRegion) {
                     return res.status(400).json({
@@ -72,11 +75,15 @@ const post = async (
                         error: "character_name key is required",
                     });
                 }
+                const profile = await getUserProfile(
+                    session.user.email,
+                    client
+                );
                 const wowEntity: WowEntity = {
                     entity_id: entityId,
                     user_id: session.user.email,
                     region: wowRegion,
-                    public_username: wowPublic_username,
+                    public_username: profile.public_username,
                     character_name: wowCharacterName,
                     realm: req.body.realm,
                     game,
